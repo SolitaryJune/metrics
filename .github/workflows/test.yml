@@ -1,8 +1,9 @@
 name: 📊 Gist Metrics
 
 on:
-  schedule: [{ cron: "0 0 * * *" }]  # 每天运行一次
-  workflow_dispatch:
+  schedule: 
+    - cron: "0 0 * * *"  # 每天午夜运行
+  workflow_dispatch:      # 支持手动触发
 
 jobs:
   metrics:
@@ -10,32 +11,33 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
+          # 基础配置
           token: ${{ secrets.METRICS_TOKEN }}
           user: SolitaryJune
           template: classic
-          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Shanghai
+          
+          # 输出设置
           config_output: gist
           filename: github-metrics.svg
-          plugin_languages: yes
-          plugin_achievements: yes
-          plugin_lines: yes
-          plugin_stars: yes
-          plugin_followup: yes
-          plugin_projects: yes
-          plugin_traffic: yes
-          plugin_isocalendar: yes
-          plugin_topics: yes
-          plugin_topics_mode: mastered
-          plugin_topics_limit: 12
-          plugin_notable: yes
-          plugin_notable_repositories: false
-          plugin_gists: yes
-          plugin_habits: yes
-          plugin_habits_charts: yes
-          plugin_habits_trim: false
-          plugin_calendar: yes
-          plugin_calendar_limit: 1
-          plugin_activity: yes
-          config_timezone: Asia/Shanghai
           gist_token: ${{ secrets.GIST_TOKEN }}
           gist: SolitaryJune/4da7468dd6e340c2ea4396ae000115fc
+          
+          # 核心指标
+          base: header, activity, community, repositories
+          
+          # 主要插件
+          plugin_languages: yes        # 编程语言统计
+          plugin_achievements: yes     # 成就
+          plugin_isocalendar: yes     # 贡献日历
+          plugin_habits: yes          # 编码习惯
+          plugin_habits_charts: yes
+          
+          # 额外信息
+          plugin_topics: yes          # 擅长主题
+          plugin_topics_mode: mastered
+          plugin_topics_limit: 8
+          
+          plugin_activity: yes        # 活动记录
+          plugin_calendar: yes        # 活动日历
+          plugin_calendar_limit: 1
