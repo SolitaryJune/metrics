@@ -28,7 +28,7 @@ jobs:
           plugin_topics_mode: mastered
           plugin_topics_limit: 12
           plugin_notable: yes
-          plugin_notable_repositories: yes
+          plugin_notable_repositories: false
           plugin_gists: yes
           plugin_habits: yes
           plugin_habits_charts: yes
