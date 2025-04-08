@@ -24,11 +24,10 @@ jobs:
           gist: SolitaryJune/4da7468dd6e340c2ea4396ae000115fc
           
           # 核心指标
-          base: header, activity, community, repositories
+          base: header, community, repositories
           
           # 主要插件
           plugin_languages: yes        # 编程语言统计
-          plugin_achievements: yes     # 成就
           plugin_isocalendar: yes     # 贡献日历
           plugin_habits: yes          # 编码习惯
           plugin_habits_charts: yes
@@ -38,6 +37,5 @@ jobs:
           plugin_topics_mode: mastered
           plugin_topics_limit: 8
           
-          plugin_activity: yes        # 活动记录
           plugin_calendar: yes        # 活动日历
           plugin_calendar_limit: 1
